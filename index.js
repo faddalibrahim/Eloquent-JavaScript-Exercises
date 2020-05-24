@@ -1,3 +1,11 @@
+/* NOTE!!!!
+
+all the solutions run. test them one by one by commenting out the others before running the file
+or better still copy and paste the parts you wanna test into your editor or browser
+
+*/
+
+
 /* 1. Write a loop that makes seven calls to console.log to output the following
 triangle:
 #
@@ -8,25 +16,25 @@ triangle:
 ######
 #######*/
 
-//solution1(My solution)
-// let str = "";
+// solution1(My solution)
+let str = "";
 
-// while(str.length < 7){
-//     str += "#";
-//     console.log(str);
-// }
+while(str.length < 7){
+    str += "#";
+    console.log(str);
+}
 
 // solution 2(My solution)
-// let str = "";
+let str = "";
 
-// for(let len = 0; str.length < 7; len++){
-//     str += "#";
-//     console.log(str)
-// }
+for(let len = 0; str.length < 7; len++){
+    str += "#";
+    console.log(str)
+}
 
 // solution 3(From Eloquent JavaScript Site)
-// for (let line = "#"; line.length < 8; line += "#")
-//   console.log(line);
+for (let line = "#"; line.length < 8; line += "#")
+  console.log(line);
 
 /*2. Write a program that uses console.log to print all the numbers from 1 to 100,
 with two exceptions. For numbers divisible by 3, print "Fizz" instead of the
@@ -38,23 +46,23 @@ for numbers divisible by only one of those).
 a significant percentage of programmer candidates. So if you solved it, your
 labor market value just went up.)*/
 
-//solution 1(My solution)
-// let num = 1;
-// while(num < 101){
-//     if(num % 3 === 0 && num % 5 !== 0 ) console.log("Fizz");
-//     else if(num % 5 === 0 && num % 3 !== 0) console.log("Buzz");
-//     else if(num % 3 === 0 && num % 5 === 0) console.log("FizzBuzz")
-//     else console.log(num);
-//     num++
-// }
+// solution 1(My solution)
+let num = 1;
+while(num < 101){
+    if(num % 3 === 0 && num % 5 !== 0 ) console.log("Fizz");
+    else if(num % 5 === 0 && num % 3 !== 0) console.log("Buzz");
+    else if(num % 3 === 0 && num % 5 === 0) console.log("FizzBuzz")
+    else console.log(num);
+    num++
+}
 
 //solution 2(From Eloquent JavaScript Site)
-// for (let n = 1; n <= 100; n++) {
-//     let output = "";
-//     if (n % 3 == 0) output += "Fizz";
-//     if (n % 5 == 0) output += "Buzz";
-//     console.log(output || n);
-// }
+for (let n = 1; n <= 100; n++) {
+    let output = "";
+    if (n % 3 == 0) output += "Fizz";
+    if (n % 5 == 0) output += "Buzz";
+    console.log(output || n);
+}
 
 /*3. Write a program that creates a string that represents an 8×8 grid, using newline
 characters to separate lines. At each position of the grid there is either a space
@@ -72,7 +80,7 @@ When you have a program that generates this pattern, define a binding size
 = 8 and change the program so that it works for any size, outputting a grid
 of the given width and height.*/
 
-//solution 1(almost worked, until i wrapped the i + j in brackets)(My solution)
+//solution 1(My solution)
 for(let i = 0; i < 8; ++i){
     let row = ""
     for(let j = 0; j < 8; ++j){
@@ -83,18 +91,18 @@ for(let i = 0; i < 8; ++i){
 }
 
 // solution 2(From Eloquent JavaScript)
-// let size = 8;
-// let board = "";
+let size = 8;
+let board = "";
 
-// for (let y = 0; y < size; y++) {
-//   for (let x = 0; x < size; x++) {
-//     if ((x + y) % 2 == 0) {
-//       board += " ";
-//     } else {
-//       board += "#";
-//     }
-//   }
-//   board += "\n";
-// }
+for (let y = 0; y < size; y++) {
+  for (let x = 0; x < size; x++) {
+    if ((x + y) % 2 == 0) {
+      board += " ";
+    } else {
+      board += "#";
+    }
+  }
+  board += "\n";
+}
 
-// console.log(board);
+console.log(board);
