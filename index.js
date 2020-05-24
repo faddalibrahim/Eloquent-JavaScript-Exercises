@@ -1,0 +1,1 @@
+console.log("I am going to post all my solutions for Eloquent JavaScript Exercises here")
