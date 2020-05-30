@@ -1,120 +1,97 @@
-/* NOTE!!!!
+// The previous chapter introduced the standard function Math.min that returns
+// its smallest argument. We can build something like that now. Write a function
+// min that takes two arguments and returns their minimum.
+// console.time("it took me: ")
+// function min(a, b){
+//   return a > b ? b : a;
+// }
+// console.log(min(1,3));
+// console.timeEnd("it took me: ")
 
-all the solutions run. test them one by one by commenting out the others before running the file
-or better still copy and paste the parts you wanna test into your editor or browser
+// console.time("it took them: ")
+// function minn(a, b) {
+//   if (a < b) return a;
+//   else return b;
+// }
+// console.log(minn(1,3));
+// console.timeEnd("it took them: ")
 
-*/
 
 
-/* 1. Write a loop that makes seven calls to console.log to output the following
-triangle:
-#
-##
-###
-####
-#####
-######
-#######*/
+// We’ve seen that % (the remainder operator) can be used to test whether a
+// number is even or odd by using % 2 to see whether it’s divisible by two. Here’s
+// another way to define whether a positive whole number is even or odd:
+// • Zero is even.
+// • One is odd.
+// • For any other number N, its evenness is the same as N - 2.
 
-// solution1(My solution)
-console.time("It took me: ")
-let str = "";
+// console.time("it took me: ")
+// function isEvenn(num){
+//   num = num < 0 ? -num : num;
+//   if(num == 0){
+//       return "even"
+//   }else if(num == 1){
+//       return "odd"
+//   }else return isEvenn(num - 2)
+// }
+// console.log(isEvenn(-9))
+// console.timeEnd("it took me: ")
 
-while(str.length < 7){
-    str += "#";
-    console.log(str);
+
+// console.time("it took them: ")
+// function isEven(n) {
+//   if (n == 0) return true;
+//   else if (n == 1) return false;
+//   else if (n < 0) return isEven(-n);
+//   else return isEven(n - 2);
+// }
+// console.log(isEven(-9))
+// console.timeEnd("it took them: ")
+
+
+
+
+// You can get the Nth character, or letter, from a string by writing "string"[N].
+// The returned value will be a string containing only one character (for example,
+// "b"). The first character has position 0, which causes the last one to be found at
+// position string.length - 1. In other words, a two-character string has length
+// 2, and its characters have positions 0 and 1.
+// Write a function countBs that takes a string as its only argument and returns
+// a number that indicates how many uppercase “B” characters there are in the
+// string.
+// Next, write a function called countChar that behaves like countBs, except
+// it takes a second argument that indicates the character that is to be counted
+// (rather than counting only uppercase “B” characters). Rewrite countBs to
+// make use of this new function.
+function countBs(string){
+  let count = 0;
+  for(let i = 0; i < string.length; i++){
+      if(string[i] === 'B') count++
+  }
+  console.log(`there are ${count} Bs in the word ${string}`)
 }
-console.timeEnd("It took me: ")
+countBs("Banana")
 
-// solution 2(My solution)
-// let str = "";
+function countChar(string, char){
+  let count = 0;
+  for(let i = 0; i < string.length; i++){
+      if(string[i] === char) count++
+  }
+  console.log(`there are ${count} ${char}s in the word ${string}`)
+}
+countChar("Banana","a")
 
-// for(let len = 0; str.length < 7; len++){
-//     str += "#";
-//     console.log(str)
-// }
 
-// solution 3(From Eloquent JavaScript Site)
-console.time("It took them: ")
-for (let line = "#"; line.length < 8; line += "#")
-  console.log(line);
-  console.timeEnd("It took them: ")
+function countChar(string, ch) {
+  let counted = 0;
+  for (let i = 0; i < string.length; i++) {
+    if (string[i] == ch) {
+      counted += 1;
+    }
+  }
+  return counted;
+}
 
-/*2. Write a program that uses console.log to print all the numbers from 1 to 100,
-with two exceptions. For numbers divisible by 3, print "Fizz" instead of the
-number, and for numbers divisible by 5 (and not 3), print "Buzz" instead.
-When you have that working, modify your program to print "FizzBuzz" for
-numbers that are divisible by both 3 and 5 (and still print "Fizz" or "Buzz"
-for numbers divisible by only one of those).
-(This is actually an interview question that has been claimed to weed out
-a significant percentage of programmer candidates. So if you solved it, your
-labor market value just went up.)*/
-
-// solution 1(My solution)
-// console.time("It took me: ")
-// let num = 1;
-// while(num < 101){
-//     if(num % 3 === 0 && num % 5 !== 0 ) console.log("Fizz");
-//     else if(num % 5 === 0 && num % 3 !== 0) console.log("Buzz");
-//     else if(num % 3 === 0 && num % 5 === 0) console.log("FizzBuzz")
-//     else console.log(num);
-//     num++
-// }
-// console.timeEnd("It took me: ")
-
-//solution 2(From Eloquent JavaScript Site)
-// console.time("It took them: ")
-// for (let n = 1; n <= 100; n++) {
-//     let output = "";
-//     if (n % 3 == 0) output += "Fizz";
-//     if (n % 5 == 0) output += "Buzz";
-//     console.log(output || n);
-// }
-// console.timeEnd("It took them: ")
-
-/*3. Write a program that creates a string that represents an 8×8 grid, using newline
-characters to separate lines. At each position of the grid there is either a space
-or a "#" character. The characters should form a chessboard.
-Passing this string to console.log should show something like this:
- # # # #
-# # # #
- # # # #
-# # # #
- # # # #
-# # # #
- # # # #
-# # # #
-When you have a program that generates this pattern, define a binding size
-= 8 and change the program so that it works for any size, outputting a grid
-of the given width and height.*/
-
-//solution 1(My solution)
-// console.time("It took me: ")
-// for(let i = 0; i < 8; ++i){
-//     let row = ""
-//     for(let j = 0; j < 8; ++j){
-//         if((i + j) % 2 == 0) row += " ";
-//         else row += "#";
-//     }
-//     console.log(row)
-// }
-// console.timeEnd("It took me: ")
-
-// solution 2(From Eloquent JavaScript)
-// console.time("It took them: ")
-// let size = 8;
-// let board = "";
-
-// for (let y = 0; y < size; y++) {
-//   for (let x = 0; x < size; x++) {
-//     if ((x + y) % 2 == 0) {
-//       board += " ";
-//     } else {
-//       board += "#";
-//     }
-//   }
-//   board += "\n";
-// }
-
-// console.log(board);
-// console.timeEnd("It took them: ")
+function countBs(string) {
+  return countChar(string, "B");
+}
